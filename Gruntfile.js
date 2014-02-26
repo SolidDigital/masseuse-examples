@@ -13,4 +13,6 @@ module.exports = function (grunt) {
 
     grunt.loadTasks('task-configs');
     grunt.loadTasks('tasks');
+
+    grunt.registerTask('deploy', ['copy:app', 'buildGhPages:ghPages']);
 };

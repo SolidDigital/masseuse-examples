@@ -1,8 +1,8 @@
 /*globals module:true */
 module.exports = function(grunt) {
     'use strict';
-    grunt.config('build_gh_pages', {
-        gh_pages : {
+    grunt.config('buildGhPages', {
+        ghPages : {
             options : {
                 build_branch : 'gh-pages',
                 dist : 'build'
