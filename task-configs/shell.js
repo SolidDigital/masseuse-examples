@@ -10,6 +10,14 @@ module.exports = function(grunt) {
                 failOnError : true
             },
             command : 'mocha-phantomjs tests/index.html'
+        },
+        'commitReleaseNotes' : {
+            options : {
+                stdout : true,
+                stderr : true,
+                failOnError : true
+            },
+            command : 'git commit README.md release_notes -m "updating release notes'
         }
     });
 };

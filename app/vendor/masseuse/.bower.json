@@ -14,14 +14,14 @@
     "sinon-chai": "2.5.0"
   },
   "homepage": "https://github.com/Solid-Interactive/masseuse",
-  "version": "1.11.2",
-  "_release": "1.11.2",
+  "version": "1.13.2",
+  "_release": "1.13.2",
   "_resolution": {
     "type": "version",
-    "tag": "1.11.2",
-    "commit": "8869aa9a4ad2a3d57183377f0b219e63959ba7d6"
+    "tag": "1.13.2",
+    "commit": "0347c3dec83b19147c0e74ea2dc1c8d1516de1c1"
   },
   "_source": "git://github.com/Solid-Interactive/masseuse.git",
-  "_target": "1.11.2",
+  "_target": "1.13.2",
   "_originalSource": "masseuse"
 }
