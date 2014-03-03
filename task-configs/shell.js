@@ -18,6 +18,14 @@ module.exports = function(grunt) {
                 failOnError : true
             },
             command : 'git commit README.md release_notes -m "updating release notes"'
+        },
+        'pushMaster' : {
+            options : {
+                stdout : true,
+                stderr : true,
+                failOnError : true
+            },
+            command : 'git push origin master'
         }
     });
 };

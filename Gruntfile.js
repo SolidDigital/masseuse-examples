@@ -14,5 +14,10 @@ module.exports = function (grunt) {
     grunt.loadTasks('task-configs');
     grunt.loadTasks('tasks');
 
-    grunt.registerTask('deploy', ['releaseNotes', 'shell:commitReleaseNotes', 'copy:app', 'buildGhPages:ghPages']);
+    grunt.registerTask('deploy', [
+        'releaseNotes',
+        'shell:commitReleaseNotes',
+        'shell:pushMaster',
+        'copy:app',
+        'buildGhPages:ghPages']);
 };
