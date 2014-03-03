@@ -17,7 +17,7 @@ module.exports = function(grunt) {
                 stderr : true,
                 failOnError : true
             },
-            command : 'git commit README.md release_notes -m "updating release notes'
+            command : 'git commit README.md release_notes -m "updating release notes"'
         }
     });
 };
