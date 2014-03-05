@@ -1,11 +1,13 @@
 <h1>mmm fruit</h1>
 <ul id="sortable" class="ui-sortable">
-    <li class="ui-state-default" data-rv-each-fruit="model:fruits">
-        <span class="ui-icon ui-icon-arrowthick-2-n-s"></span>{{fruit}}
+    <li class="ui-state-default" data-rv-each-fruit="collection:" data-rv-id="fruit.cid">
+        <span class="ui-icon ui-icon-arrowthick-2-n-s"></span>{{fruit:type}}
     </li>
 </ul>
 
-<h3>the model</h3>
-<ul>
-    <li class="ui-state-default" data-rv-each-fruit="model:fruits" data-rv-text="fruit"></li>
-</ul>
+<h3>the collection</h3>
+<div class="ui-state-default">
+    <pre>  models : [</pre>
+    <pre data-rv-each-fruit="collection:">    { type : {{fruit:type}} }</pre>
+    <pre>  ]</pre>
+</div>
