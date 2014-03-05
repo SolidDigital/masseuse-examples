@@ -1,30 +1,37 @@
-define(['masseuse', 'underscore', './options', 'jquery', 'jmain'], function(masseuse, _, options, $) {
+define(['backbone', 'masseuse', 'underscore', './options', 'jquery', 'jmain'],
+    function(Backbone, masseuse, _, options) {
     'use strict';
 
-    return masseuse.plugins.rivets.RivetsView.extend({
+    var DragDrop = masseuse.plugins.rivets.RivetsView.extend({
         defaultOptions :  options,
+        initialize : initialize,
         afterRender : afterRender
     });
 
+    function initialize() {
+        this.collection = new Backbone.Collection(
+            [{type:'apple'},{type:'banana'},{type:'kiwi'},{type:'grapefruit'},{type:'grape'}]);
+        DragDrop.__super__.initialize.apply(this, arguments);
+    }
+
     function afterRender() {
-        var $sortable = this.$( '#sortable'),
+        var $sortable = this.$( '#sortable');
+        $sortable.sortable({
+            stop : _.debounce(_stop.bind(this, $sortable), 50)
+        });
+    }
+
+    return DragDrop;
+
+    function _stop($sortable) {
+        var fruits = [],
             self = this;
 
-        $sortable.sortable().bind('drop', _.debounce(function() {
-            var fruits = [],
-                changed = false;
+        $sortable.find('li').each(function() {
+            fruits.push(self.collection.get(this.id));
+        });
 
-            _.each($sortable.find('li'), function(li) {
-                var fruit = $(li).text().trim();
-                if (fruit.length) {
-                    fruits.push(fruit);
-                    changed = true;
-                }
-            });
-            if (changed) {
-                self.model.set('fruits', fruits);
-                self.refresh();
-            }
-        }, 50));
+        this.collection.set(fruits);
+        this.refresh();
     }
 });
