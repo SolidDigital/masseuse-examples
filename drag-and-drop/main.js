@@ -4,8 +4,7 @@
     require.config({
         shim : {
             touchpunch : {
-                deps : ['jquery', 'jqueryui'],
-                exports : ['$']
+                deps : ['jqueryui']
             }
         },
         paths : {
