@@ -1,4 +1,4 @@
-define(['masseuse', 'underscore', './options', 'jmain'], function(masseuse, _, options) {
+define(['masseuse', 'underscore', './options', 'jquery', 'jmain'], function(masseuse, _, options, $) {
     'use strict';
 
     return masseuse.plugins.rivets.RivetsView.extend({
@@ -7,22 +7,24 @@ define(['masseuse', 'underscore', './options', 'jmain'], function(masseuse, _, o
     });
 
     function afterRender() {
-        var $sortable = this.$( '#sortable');
-        var self = this;
-        $sortable.sortable().bind("DOMSubtreeModified", _.debounce(function() {
+        var $sortable = this.$( '#sortable'),
+            self = this;
+
+        $sortable.sortable().bind('drop', _.debounce(function() {
             var fruits = [],
                 changed = false;
 
-            _.each($(this).find('li'), function(li, index) {
+            _.each($sortable.find('li'), function(li) {
                 var fruit = $(li).text().trim();
                 if (fruit.length) {
-                    fruits[index] = fruit;
+                    fruits.push(fruit);
                     changed = true;
                 }
             });
             if (changed) {
                 self.model.set('fruits', fruits);
+                self.refresh();
             }
-        }, 500));
+        }, 50));
     }
 });
