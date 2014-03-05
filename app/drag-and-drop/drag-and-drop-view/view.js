@@ -1,5 +1,5 @@
 define(['backbone', 'masseuse', 'underscore', './options', 'jquery', 'jmain'],
-    function(Backbone, masseuse, _, options, $) {
+    function(Backbone, masseuse, _, options) {
     'use strict';
 
     var DragDrop = masseuse.plugins.rivets.RivetsView.extend({
