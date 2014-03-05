@@ -16,4 +16,4 @@ http://solid-interactive.github.io/masseuse-examples/
 Copyright (c) 2014 SOLID Interactive
 Licensed under the MIT license.
 
-Compiled file. Do not edit directly.  Created: 2014-03-05 08:30:19_
+Compiled file. Do not edit directly.  Created: 2014-03-05 08:50:54_
