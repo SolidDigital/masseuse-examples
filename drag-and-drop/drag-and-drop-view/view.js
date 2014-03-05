@@ -1,4 +1,4 @@
-define(['backbone', 'masseuse', 'underscore', './options', 'jquery', 'jmain'],
+define(['backbone', 'masseuse', 'underscore', './options', 'jqueryui'],
     function(Backbone, masseuse, _, options) {
     'use strict';
 
