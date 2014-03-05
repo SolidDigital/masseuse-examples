@@ -15,8 +15,8 @@
             rivets : '../vendor/rivets/dist/rivets',
             backbone : '../vendor/backbone-amd/backbone',
             text : '../vendor/requirejs-text/text',
-            jplugins : 'http://cdn.jsdelivr.net/jquery.ui/1.10.4/jquery-ui.min',
-            jmain : 'http://cdn.jsdelivr.net/jquery.sortable/0.1/jquery.sortable'
+            jplugins : './js/jquery-1.10.2',
+            jmain : './js/jquery-ui-1.10.4.custom.min'
         },
         packages : [
             {

@@ -7,24 +7,28 @@ define(['masseuse', 'underscore', './options', 'jquery', 'jmain'], function(mass
     });
 
     function afterRender() {
-        var $sortable = this.$( '#sortable'),
-            self = this;
+        var $sortable = this.$( '#sortable');
 
-        $sortable.sortable().bind('drop', _.debounce(function() {
-            var fruits = [],
-                changed = false;
+        $sortable.sortable({
+            stop : _.debounce(_stop.bind(this, $sortable), 50)
+        });
+    }
 
-            _.each($sortable.find('li'), function(li) {
-                var fruit = $(li).text().trim();
-                if (fruit.length) {
-                    fruits.push(fruit);
-                    changed = true;
-                }
-            });
-            if (changed) {
-                self.model.set('fruits', fruits);
-                self.refresh();
+    function _stop($sortable) {
+        var fruits = [],
+            changed = false;
+
+        $sortable.find('li').each(function() {
+            var fruit = $(this).text().trim();
+            if (fruit.length) {
+                fruits.push(fruit);
+                changed = true;
             }
-        }, 50));
+        });
+
+        if (changed) {
+            this.model.set('fruits', fruits);
+            this.refresh();
+        }
     }
 });
