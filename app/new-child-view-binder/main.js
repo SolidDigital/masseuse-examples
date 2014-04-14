@@ -21,8 +21,9 @@
     });
 
     require([
-        'todo-list-view/view'
-    ], function (TodoListView) {
+        'todo-project-view/view',
+        'masseuse'
+    ], function (view, masseuse) {
 
         // A simplified example of complex data that you would want to show in one big view
         // This would often be handled w/ model.sync, but we'll keep things as simple as possible
@@ -40,10 +41,11 @@
                 { title : 'mow lawn' }
             ]
         };
-        new TodoListView({
+        new view.ProjectView({
             modelData : {
                 todos : dataFromApi
-            }
+            },
+            collection : new masseuse.Collection(dataFromApi.subtasks)
         }).start();
     });
 }());

@@ -16,14 +16,5 @@
     "node_modules",
     "bower_components",
     "spec"
-  ],
-  "_release": "0.6.7",
-  "_resolution": {
-    "type": "version",
-    "tag": "v0.6.7",
-    "commit": "1f029815adde409b4face573dd435b9dcd7306ff"
-  },
-  "_source": "git://github.com/mikeric/rivets.git",
-  "_target": "0.6.7",
-  "_originalSource": "rivets"
+  ]
 }

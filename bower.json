@@ -1,7 +1,7 @@
 {
-    "name": "masseuse-examples",
-    "dependencies": {
-        "masseuse" : "1.13.5",
-        "requirejs-text": "2.0.10"
-    }
+  "name": "masseuse-examples",
+  "dependencies": {
+    "masseuse": "2.2.0",
+    "requirejs-text": "2.0.10"
+  }
 }

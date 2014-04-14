@@ -10,7 +10,7 @@ define(['underscore', './loadRivets', './binders', './formatters', './adapters']
          */
         function setViewRiveting (options) {
             var rivetsOptions,
-                rivetedView;
+                rivetedViews;
 
             if (false === options.rivetsConfig || false === options.rivetConfig) {
                 return;
@@ -43,22 +43,26 @@ define(['underscore', './loadRivets', './binders', './formatters', './adapters']
                 rivetsOptions.prefix || options.rivetsPrefix || options.rivetPrefix;
 
             rivetsOptions = {
+                rivetsInstaUpdate : rivetsOptions.instaUpdate,
                 rivetsDelimiters : rivetsOptions.rivetsDelimiters || ['{{', '}}'],
                 rivetsPrefix : options.rivetsPrefix || 'data-rv',
                 rivetsComponents : _.extend.apply(_, rivetsOptions.rivetsComponents),
                 rivetsFormatters : _.extend.apply(_, rivetsOptions.rivetsFormatters),
                 rivetsAdapters : _.extend.apply(_, rivetsOptions.rivetsAdapters),
                 rivetsBinders : _.extend.apply(_, rivetsOptions.rivetsBinders),
-                childViewBinders : rivetsOptions.childViewBinders
+                childViewBinders : rivetsOptions.childViewBinders,
+                skipRoot : rivetsOptions.skipRoot || options._rivetsSkipRoot
             };
 
             this.listenTo(this, 'afterTemplatingDone', function() {
-                rivetedView = rivetView.call(this, rivetsOptions);
+                rivetedViews = rivetView.call(this, rivetsOptions);
             });
 
             this.listenTo(this, 'onRemove', function () {
-                if (rivetedView) {
-                    rivetedView.unbind();
+                if (rivetedViews) {
+                    _.each(rivetedViews, function(view) {
+                        view.unbind();
+                    });
                 }
             });
         }
