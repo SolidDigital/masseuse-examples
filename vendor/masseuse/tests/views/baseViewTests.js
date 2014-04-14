@@ -1,5 +1,5 @@
-define(['jquery', 'underscore', 'chai', 'mocha', 'sinon', 'sinonChai', 'masseuse', 'sinonSpy'],
-    function ($, _, chai, mocha, sinon, sinonChai, masseuse) {
+define(['jquery', 'underscore', 'chai', 'mocha', 'sinon', 'sinonChai', 'masseuse', 'backbone', 'sinonSpy'],
+    function ($, _, chai, mocha, sinon, sinonChai, masseuse, Backbone) {
 
         'use strict';
         var VIEW1_NAME = 'testView1',
@@ -27,6 +27,10 @@ define(['jquery', 'underscore', 'chai', 'mocha', 'sinon', 'sinonChai', 'masseuse
                 viewInstance = new BaseView({
                     name : VIEW1_NAME
                 });
+            });
+
+            it('is an instance of Backbone.View', function() {
+                new masseuse.View().should.be.instanceOf(Backbone.View);
             });
 
             describe('initialize', function() {
@@ -199,18 +203,15 @@ define(['jquery', 'underscore', 'chai', 'mocha', 'sinon', 'sinonChai', 'masseuse
                         var childView = new BaseView({
                             name : CHILD_VIEW_NAME
                         }),
-                            childRenderSpy = sinon.spy(childView, 'render'),
-                            parentRenderSpy = sinon.spy(viewInstance, 'render');
+                            childStartSpy = sinon.spy(childView, 'start');
 
                         viewInstance.children.length.should.equal(0);
 
                         viewInstance.start();
 
-                        parentRenderSpy.should.have.been.calledOnce;
-
+                        childStartSpy.should.not.have.been.called;
                         viewInstance.addChild(childView);
-
-                        childRenderSpy.should.not.have.been.calledOnce;
+                        childStartSpy.should.have.been.calledOnce;
                     });
 
                     describe('should return the views added', function() {
@@ -393,11 +394,11 @@ define(['jquery', 'underscore', 'chai', 'mocha', 'sinon', 'sinonChai', 'masseuse
                             .done(function () {
                                 viewInstance.addChild(childView2);
                                 childStartView1.should.have.been.calledOnce;
-                                childStartView2.should.not.have.been.called;
+                                childStartView2.should.have.been.calledOnce;
                                 viewInstance.refreshChildren()
                                     .done(function() {
                                         childStartView1.should.have.been.calledTwice;
-                                        childStartView2.should.have.been.calledOnce;
+                                        childStartView2.should.have.been.calledTwice;
                                         done();
                                     });
                             });

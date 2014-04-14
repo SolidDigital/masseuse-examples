@@ -31,7 +31,6 @@ define(['backbone', 'masseuse', 'underscore', './options', 'jqueryui'],
             fruits.push(self.collection.get(this.id));
         });
 
-        this.collection.reset(fruits);
-        this.refresh();
+        this.collection.reset(fruits, {silent : true});
     }
 });
