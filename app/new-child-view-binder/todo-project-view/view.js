@@ -1,7 +1,21 @@
-define(['exports', 'masseuse', './options'], function(exports, masseuse, options) {
+define(['require', 'jquery', 'masseuse', './options'], function(require, $, masseuse, options) {
     'use strict';
 
-    exports.ProjectView = masseuse.plugins.rivets.RivetsView.extend({
-        defaultOptions :  options.options()
+    var ProjectView = masseuse.plugins.rivets.RivetsView.extend({
+        defaultOptions :  options,
+        addProjectViewReference : addProjectViewReference
     });
+
+    return ProjectView;
+
+    function addProjectViewReference() {
+        var $deferred = new $.Deferred();
+
+        require(['./options'], function(options) {
+            options.rivetsConfig.childViewBinders['project-view'] = ProjectView;
+            $deferred.resolve();
+        });
+
+        return $deferred.promise();
+    }
 });

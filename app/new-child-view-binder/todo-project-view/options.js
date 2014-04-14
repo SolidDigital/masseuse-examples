@@ -1,17 +1,16 @@
-define(['exports', 'text!./template.html', './view', './formatters'],
-    function (exports, template, view, formatters) {
+define(['text!./template.html', './formatters'],
+    function (template, formatters) {
         'use strict';
-
-        exports.options = function () {
-            return {
-                appendTo: 'body',
-                template: template,
-                rivetsConfig: {
-                    formatters: [formatters],
-                    childViewBinders: {
-                        'project-view': view.ProjectView
-                    }
-                }
-            };
+        return {
+            appendTo     : '#myTodos',
+            template     : template,
+            rivetsConfig : {
+                formatters       : [formatters],
+                childViewBinders : {
+                    // Circular reference, so added in dynamically
+                    'project-view' : null
+                },
+                instaUpdate : true
+            }
         };
     });
