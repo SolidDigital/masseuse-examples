@@ -3,15 +3,6 @@ define(['text!./template.html'], function (template) {
 
     return {
         prependTo : 'body',
-        template : template,
-        modelData : {
-            fruits : [
-                'apple',
-                'banana',
-                'passion fruit',
-                'kiwi',
-                'dragon fruit'
-            ]
-        }
+        template : template
     };
 });
