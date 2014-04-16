@@ -31,7 +31,7 @@
         ProjectView.prototype.addProjectViewReference()
             .done(function() {
                 new ProjectView({
-                    collection : window.x = new masseuse.Collection(dataFromApi)
+                    collection : new masseuse.Collection(dataFromApi)
                 }).start();
             });
     });
