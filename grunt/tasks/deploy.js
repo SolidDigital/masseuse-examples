@@ -6,6 +6,7 @@ module.exports = function(grunt) {
         'shell:commitReleaseNotes',
         'shell:pushMaster',
         'copy:app',
+        'requirejs',
         'buildGhPages:ghPages'
     ]);
 };

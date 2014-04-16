@@ -1,7 +1,7 @@
 {
   "name": "masseuse-examples",
   "description": "example usage of backbone masseuse",
-  "version": "0.2.2",
+  "version": "0.3.0",
   "homepage": "https://github.com/Solid-Interactive/masseuse-examples",
   "author": {
     "name": "SOLID Interactive",
@@ -41,7 +41,8 @@
     "matchdep": "0.3.0",
     "grunt-release-notes": "0.1.0",
     "mocha-phantomjs": "3.3.1",
-    "grunt-contrib-copy": "~0.5.0"
+    "grunt-contrib-copy": "~0.5.0",
+    "lodash": "~2.4.1"
   },
   "keywords": []
 }
