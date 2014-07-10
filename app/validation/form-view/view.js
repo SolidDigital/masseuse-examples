@@ -6,9 +6,8 @@ define(['masseuse', './options'], function(masseuse, options) {
         submit : submit
     });
 
-    function submit(event) {
-        event.preventDefault();
+    function submit(e) {
+        e.preventDefault();
         console.log('submitted');
-        return false;
     }
 });
