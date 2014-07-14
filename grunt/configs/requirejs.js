@@ -6,7 +6,8 @@ module.exports = function (grunt) {
             'async-render',
             'drag-and-drop',
             'new-child-view-binder',
-            'two-way-binding'
+            'two-way-binding',
+            'validation'
         ],
         config = {};
 
