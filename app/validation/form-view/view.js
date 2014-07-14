@@ -7,6 +7,7 @@ define(['masseuse', './options'], function(masseuse, options) {
     });
 
     function submit(e) {
+        this.model.validate();
         e.preventDefault();
         console.log('submitted');
     }
