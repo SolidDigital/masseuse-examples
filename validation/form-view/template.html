@@ -1,0 +1,11 @@
+<form data-rv-on-submit="view.submit">
+    <h3 data-rv-text="view.test"></h3>
+    <label>First Name:</label> <input type="text" data-rv-value="model:firstName"/>
+    <span data-rv-if="model:firstNameError">{{model:firstNameError}}</span>
+    <label>Last Name:</label> <input type="text" data-rv-value="model:lastName"/>
+    <span data-rv-if="model:lastNameError">{{model:lastNameError}}</span>
+    <label>Eletronic Mail Unique Identifier: </label><input type="text" data-rv-value="model:email"/>
+    <span data-rv-if="model:emailError">{{model:emailError}}</span>
+    <input type="submit" value="SuBmIt"/>
+    <span data-rv-if="model:hasError">THERE ARE ERRORS IN THE MODEL</span>
+</form>
