@@ -3,10 +3,22 @@ define(['masseuse', './options', 'jquery'], function (masseuse, options, $) {
 
     return masseuse.plugins.rivets.RivetsView.extend({
         defaultOptions : options,
+        initialize : initialize,
+        start : start,
         beforeRender : beforeRender,
         afterRender : afterRender,
         render : render
     });
+
+    function initialize() {
+        $('<li/>').text('Calling initialize method').appendTo('ol');
+        masseuse.plugins.rivets.RivetsView.prototype.initialize.apply(this, arguments);
+    }
+
+    function start() {
+        $('<li/>').text('Calling start method').appendTo('ol');
+        return masseuse.plugins.rivets.RivetsView.prototype.start.apply(this, arguments);
+    }
 
     function beforeRender ($deferred) {
         setTimeout($deferred.resolve, 1);

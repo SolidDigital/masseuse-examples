@@ -29,9 +29,13 @@
             $('ol').append('<li>Lifecycle event fired: '+ eventName +'</li>');
         });
 
-        view.start().progress(function (message) {
-            $('ol').append('<li>Deferred progress : '+ message +'</li>');
-        });
+        view.start()
+            .progress(function (message) {
+                $('ol').append('<li>Deferred progress : '+ message +'</li>');
+            })
+            .fail(function(){
+                $('ol').append('<li>Deferred progress : FAILURE</li>');
+            });
 
     });
 }());
