@@ -1,4 +1,4 @@
-define(['text!./template.html'], function (template) {
+define(['text!./template.html', 'jquery'], function (template, $) {
     'use strict';
 
     return {
@@ -7,6 +7,11 @@ define(['text!./template.html'], function (template) {
         rivetsInstaUpdate : true,
         modelData : {
             title : 'Hello world!'
-        }
+        },
+        plugins : [
+            function() {
+                $('<li/>').text('Calling plugins').appendTo('ol');
+            }
+        ]
     };
 });
