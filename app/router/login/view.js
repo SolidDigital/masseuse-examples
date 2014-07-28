@@ -7,7 +7,7 @@ define(['masseuse', './options', 'backbone'], function(masseuse, options, Backbo
     });
 
     function login (e) {
-        localStorage.set('authToken', '8u4r8ur8ur48ur8ur8u4r');
+        localStorage.setItem('authToken', '8u4r8ur8ur48ur8ur8u4r');
         Backbone.history.navigate('home', {trigger:true});
         e.preventDefault();
     }

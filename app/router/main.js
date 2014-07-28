@@ -21,8 +21,13 @@
     });
 
     require([
-        'login/view'
-    ], function (MasseuseexamplesView) {
-        new MasseuseexamplesView().start();
+        'backbone',
+        'routers/auth',
+        'routers/app'
+    ], function (Backbone, AuthRouter, AppRouter) {
+        new AuthRouter();
+        new AppRouter();
+
+        Backbone.history.start();
     });
 }());
