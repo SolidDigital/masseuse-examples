@@ -4,23 +4,25 @@ define(['routers/base', 'jquery', 'backbone', 'login/view'], function (BaseRoute
 
     return BaseRouter.extend({
         excludeFromBeforeRouting : ['login', 'logout'],
-        routes: {
-            'login': 'login',
-            'logout': 'logout'
+        routes : {
+            'login' : 'login',
+            'logout' : 'logout'
         },
-        login: login,
-        logout: logout
+        login : login,
+        logout : logout
     });
 
-    function login() {
-        new LoginView().start();
+    function login () {
+        this.beforeRouting()
+            .done(Backbone.history.navigate.bind(Backbone.history,'home', {trigger : true}))
+            .fail(this.loadMainContent.bind(this,LoginView));
     }
 
-    function logout() {
+    function logout () {
         localStorage.removeItem('authToken');
 
         setTimeout(function () {
-            Backbone.history.navigate('login', {trigger:true});
+            Backbone.history.navigate('login', {trigger : true});
         }, 250);
     }
 });
