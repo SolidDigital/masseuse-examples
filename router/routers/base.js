@@ -6,7 +6,8 @@ define(['masseuse', 'jquery', 'backbone'], function (masseuse, $, Backbone) {
     return masseuse.Router.extend({
         beforeRouting : beforeRouting,
         onRouteFail : onRouteFail,
-        loadMainContent : loadMainContent
+        loadMainContent : loadMainContent,
+        log : log
     });
 
     function beforeRouting() {
@@ -48,5 +49,10 @@ define(['masseuse', 'jquery', 'backbone'], function (masseuse, $, Backbone) {
             });
 
         return $deferred.promise();
+    }
+
+    function log() {
+        console.log('--- logger ---');
+        console.log(Backbone.history.getFragment());
     }
 });
