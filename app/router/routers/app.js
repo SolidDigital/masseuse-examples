@@ -4,6 +4,7 @@ define(['routers/base', 'home/view'], function (BaseRouter, HomeView) {
 
     return BaseRouter.extend({
         routes : {
+            '' : 'home',
             'home' : 'home'
         },
         home : home

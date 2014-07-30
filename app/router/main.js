@@ -23,8 +23,10 @@
     require([
         'backbone',
         'routers/auth',
-        'routers/app'
-    ], function (Backbone, AuthRouter, AppRouter) {
+        'routers/app',
+        'routers/notFound'
+    ], function (Backbone, AuthRouter, AppRouter, NotFoundRouter) {
+        new NotFoundRouter();
         new AuthRouter();
         new AppRouter();
 
